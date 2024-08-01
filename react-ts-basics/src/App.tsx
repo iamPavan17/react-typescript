@@ -14,13 +14,12 @@ export type CourseGoal = {
 export default function App() {
   const [goals, setGoals] = useState<CourseGoal[]>([]); // or useState<Array<CourseGoal>>([])
 
-  function handleAddGoal() {
+  function handleAddGoal(goal: string, summary: string) {
     setGoals((prevGoals) => {
-      // As of now, we are inserting the same goal, we will insert dynamically later.
-      const newGoal: CourseGoal = {
+      const newGoal = {
+        title: goal,
+        description: summary,
         id: Math.random(),
-        title: "Learn React + TS",
-        description: "Learn it in depth!",
       };
       return [...prevGoals, newGoal];
     });
@@ -35,7 +34,7 @@ export default function App() {
       <Header image={{ src: goalsImg, alt: "A list of goals" }}>
         <h1>Your Course Goals</h1>
       </Header>
-      <NewGoal />
+      <NewGoal onAddGoal={handleAddGoal} />
       {/* Sending onDeleteGoal function here,
           It's a common convention in React to name
           props that receive functions as values by using
