@@ -6,11 +6,12 @@ type InfoBoxProps = {
   // So we don't just say, that this should be a type string,
   // But instead, we have 2 specific strings that we want to accept.
   mode: "hint" | "warning";
+  severity?: "low" | "medium" | "high"; // ? meaning, the prop is optional.
   children: ReactNode;
 };
 
 export default function InfoBox(props: InfoBoxProps) {
-  const { mode, children } = props;
+  const { mode, children, severity } = props;
 
   if (mode === "hint") {
     return (
@@ -21,7 +22,7 @@ export default function InfoBox(props: InfoBoxProps) {
   }
 
   return (
-    <aside className="infobox infobox-warning warning--medium">
+    <aside className={`infobox infobox-warning warning--${severity}`}>
       <h2>Warning</h2>
       <p>{children}</p>
     </aside>
