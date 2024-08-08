@@ -1,4 +1,5 @@
 import Button from "./components/Button.tsx";
+import Container from "./components/Container.tsx";
 import Input from "./components/Input.tsx";
 
 function App() {
@@ -14,6 +15,12 @@ function App() {
         <Button element="anchor" href="https://www.google.com">
           A Link
         </Button>
+      </p>
+
+      <p>
+        <Container as="a" href="http://www.google.com">
+          Click me
+        </Container>
       </p>
     </>
   );
