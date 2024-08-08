@@ -1,4 +1,5 @@
 import Button from "./components/Button.tsx";
+import Card from "./components/Card.tsx";
 import Container from "./components/Container.tsx";
 import Input from "./components/Input.tsx";
 
@@ -21,6 +22,19 @@ function App() {
         <Container as="a" href="http://www.google.com">
           Click me
         </Container>
+      </p>
+
+      <p>
+        <Card
+          title="My Card"
+          actions={
+            <button onClick={() => console.log("Button clicked!")}>
+              Click Me!
+            </button>
+          }
+        >
+          <p>Some content</p>
+        </Card>
       </p>
     </>
   );
