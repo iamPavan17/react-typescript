@@ -1,7 +1,15 @@
 import Button from "./components/Button.tsx";
 import Card from "./components/Card.tsx";
 import Container from "./components/Container.tsx";
+import IconButton from "./components/IconButton.tsx";
 import Input from "./components/Input.tsx";
+
+// import Icon from "./vite.svg";
+
+function HeartIcon() {
+  // return <img src={Icon} />;
+  return <span>❤️</span>;
+}
 
 function App() {
   return (
@@ -35,6 +43,15 @@ function App() {
         >
           <p>Some content</p>
         </Card>
+      </p>
+
+      <p>
+        <IconButton
+          icon={HeartIcon}
+          onClick={() => console.log("Button clicked!")}
+        >
+          Like
+        </IconButton>
       </p>
     </>
   );
