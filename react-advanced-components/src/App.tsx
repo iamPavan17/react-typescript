@@ -5,6 +5,7 @@ import Card from "./components/Card.tsx";
 import Container from "./components/Container.tsx";
 import IconButton from "./components/IconButton.tsx";
 import Input from "./components/Input.tsx";
+import Form from "./components/Form.tsx";
 
 // import Icon from "./vite.svg";
 
@@ -16,8 +17,31 @@ function HeartIcon() {
 function App() {
   const input = useRef<HTMLInputElement>(null);
 
+  function handleSave(data: unknown) {
+    /* Type Casting - 
+        Means conversion of one data type to 
+        another data type, such as a number to a string.
+    */
+    const extractedData = data as {
+      name: string;
+      age: string;
+    };
+    console.log(extractedData);
+  }
+
   return (
     <>
+      <h2>Form Wrapper</h2>
+      <Form onSave={handleSave}>
+        <Input label="Name" type="text" id="name" />
+        <Input label="Age" type="number" id="age" />
+        <p>
+          <Button element="button">Save</Button>
+        </p>
+      </Form>
+
+      <hr />
+
       <Input id="name" label="Your name" type="text" ref={input} />
       <button onClick={() => console.log(input.current!.value)}>Submit</button>
 
