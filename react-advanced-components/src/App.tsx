@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import Button from "./components/Button.tsx";
 import Card from "./components/Card.tsx";
 import Container from "./components/Container.tsx";
@@ -12,10 +14,14 @@ function HeartIcon() {
 }
 
 function App() {
+  const input = useRef<HTMLInputElement>(null);
+
   return (
     <>
-      <Input id="name" label="Your name" type="text" />
-      <Input id="age" label="Your age" type="number" />
+      <Input id="name" label="Your name" type="text" ref={input} />
+      <button onClick={() => console.log(input.current!.value)}>Submit</button>
+
+      {/* <Input id="age" label="Your age" type="number" /> */}
 
       <p>
         <Button element="button">A Button</Button>
@@ -32,18 +38,16 @@ function App() {
         </Container>
       </p>
 
-      <p>
-        <Card
-          title="My Card"
-          actions={
-            <button onClick={() => console.log("Button clicked!")}>
-              Click Me!
-            </button>
-          }
-        >
-          <p>Some content</p>
-        </Card>
-      </p>
+      <Card
+        title="My Card heading"
+        actions={
+          <button onClick={() => console.log("Button clicked!")}>
+            Click Me!
+          </button>
+        }
+      >
+        <p>Some content</p>
+      </Card>
 
       <p>
         <IconButton
